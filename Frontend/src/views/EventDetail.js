@@ -1,52 +1,60 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import './eventDetail.css';
 
 const EventDetail = () => {
-  const { id } = useParams();
+  const { title } = useParams();
+  const history = useHistory();
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const events = {
-    1: {
-      title: "Tech Conference 2023",
-      date: "November 15-16, 2023",
-      time: "9:00 AM - 5:00 PM",
-      location: "San Francisco, CA",
-      description: "Join us for the annual Tech Conference where industry leaders share insights on the latest trends and technologies.",
-      agenda: [
-        { time: "9:00 AM", title: "Registration & Breakfast" },
-        { time: "10:00 AM", title: "Keynote: Future of Technology" },
-        { time: "12:00 PM", title: "Lunch Break" },
-        { time: "1:00 PM", title: "Panel: AI in Business" },
-        { time: "3:00 PM", title: "Workshop: Cloud Computing" }
-      ],
-      image: "https://images.stockcake.com/public/a/7/a/a7acb612-27c9-469a-bb4f-92695cc7d178_large/tech-conference-presentation-stockcake.jpg",
-      organizer: "Tech Events Inc.",
-      organizerLogo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYv-qZFL7Svj6edQQ9FXORZnbsBb4080JFiQ&s",
-      price: "$199"
-    },
-    2: {
-      title: "Web Development Workshop",
-      date: "December 5, 2023",
-      time: "10:00 AM - 4:00 PM",
-      location: "Online",
-      description: "A hands-on workshop to learn modern web development techniques including React, Node.js, and GraphQL.",
-      agenda: [
-        { time: "10:00 AM", title: "Introduction to React" },
-        { time: "12:00 PM", title: "Lunch Break" },
-        { time: "1:00 PM", title: "Building APIs with Node.js" },
-        { time: "3:00 PM", title: "GraphQL Fundamentals" }
-      ],
-      image: "https://a.storyblok.com/f/188325/1920x1280/41e681c422/alexandre-pellaes-6vajp0pscx0-unsplash-1-1.jpg",
-      organizer: "Web Dev Academy",
-      organizerLogo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYv-qZFL7Svj6edQQ9FXORZnbsBb4080JFiQ&s",
-      price: "Free"
-    },
-    
+  useEffect(() => {
+    console.log("Fetching event for title:", title);
+    if (!title) {
+      setError("Invalid event title");
+      setLoading(false);
+      return;
+    }
+
+    const fetchEvent = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/events/${encodeURIComponent(title)}`);
+        if (!response.ok) {
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          throw new Error("Invalid response format. Expected JSON.");
+        }
+
+        const data = await response.json();
+        console.log("Fetched event data:", data);
+        setEvent(data);
+      } catch (error) {
+        console.error("Error fetching event:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvent();
+  }, [title]);
+
+  const handleRegister = () => {
+    if (!event) {
+      alert("Event details are not available. Please try again later.");
+      return;
+    }
+    history.push(`/events/${encodeURIComponent(title)}/register`, { state: { event } });
   };
 
-  const event = events[id];
+  if (loading) return <p>Loading event details...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="event-detail-container">
@@ -55,11 +63,11 @@ const EventDetail = () => {
         {event ? (
           <>
             <div className="event-hero">
-              <img src={event.image} alt={event.title} className="event-hero-image" />
+              <img src={event.DisplayImg} alt={event.title} className="event-hero-image" />
               <div className="event-hero-content">
                 <h1>{event.title}</h1>
                 <div className="event-hero-meta">
-                  <p>{event.date} • {event.time}</p>
+                  <p>{event.dates} • {event.time}</p>
                   <p>{event.location}</p>
                 </div>
               </div>
@@ -75,11 +83,12 @@ const EventDetail = () => {
                 <div className="event-agenda">
                   <h2>Agenda</h2>
                   <div className="agenda-items">
-                    {event.agenda.map((item, index) => (
-                      <div className="agenda-item" key={index}>
-                        <span className="agenda-time">{item.time}</span>
-                        <span className="agenda-title">{item.title}</span>
-                      </div>
+                    {[1, 2, 3, 4, 5].map((num) => (
+                      event[`agenda${num}`] && (
+                        <div className="agenda-item" key={num}>
+                          <span className="agenda-time">{event[`agenda${num}`]}</span>
+                        </div>
+                      )
                     ))}
                   </div>
                 </div>
@@ -87,7 +96,7 @@ const EventDetail = () => {
                 <div className="event-organizer">
                   <h2>Organizer</h2>
                   <div className="organizer-info">
-                    <img src={event.organizerLogo} alt={event.organizer} className="organizer-logo" />
+                    <img src={event.organizerPic} alt={event.organizer} className="organizer-logo" />
                     <p>{event.organizer}</p>
                   </div>
                 </div>
@@ -95,11 +104,16 @@ const EventDetail = () => {
 
               <div className="event-sidebar">
                 <div className="event-actions">
-                  <button className="register-button">Register Now</button>
+                  <button 
+                    className="register-button" 
+                    onClick={handleRegister}
+                  >
+                    Register Now
+                  </button>
                   <button className="share-button">Share Event</button>
                 </div>
                 <div className="event-price">
-                  <span>{event.price}</span>
+                  <span>{event.cost}</span>
                 </div>
               </div>
             </div>

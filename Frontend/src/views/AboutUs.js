@@ -17,7 +17,7 @@ const AboutUs = () => {
         <section className="about-section">
           <h2>Our Story</h2>
           <p>
-            Founded in 2023, Tech Events Platform was born out of a passion for connecting technology enthusiasts and professionals. 
+            Founded in 2025, Tech Events Platform was born out of a passion for connecting technology enthusiasts and professionals. 
             Our mission is to create meaningful experiences through high-quality tech events and workshops.
           </p>
         </section>

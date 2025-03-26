@@ -1,0 +1,169 @@
+.registration-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.registration-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.registration-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.registration-form {
+  padding: 1rem;
+}
+
+.registration-form h2 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.registration-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.registration-form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.registration-form-group input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.registration-form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.registration-submit-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registration-submit-button:hover {
+  background-color: #2980b9;
+}
+
+.registration-event-details {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+.registration-event-image-container {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.registration-event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.registration-event-info {
+  padding: 1rem;
+}
+
+.registration-event-info h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.registration-event-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.registration-event-meta {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.registration-event-meta p {
+  margin: 0.5rem 0;
+  color: #444;
+}
+
+/* Add these new styles */
+.payment-success {
+  text-align: center;
+  padding: 2rem;
+  background: #f0f8ff;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.payment-success h3 {
+  color: #28a745;
+  margin-bottom: 1rem;
+}
+
+.registration-form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.registration-form-row .registration-form-group {
+  flex: 1;
+}
+
+/* Add these new styles */
+.loading-circle {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+@media (max-width: 768px) {
+  .registration-grid {
+    grid-template-columns: 1fr;
+  }
+}

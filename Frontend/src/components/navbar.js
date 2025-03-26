@@ -28,13 +28,10 @@ const Navbar = (props) => {
             <Link to="/contact" className="thq-body-small thq-link">{props.link4}</Link>
           </nav>
           <div className="navbar-buttons1">
-            <button className="navbar-action11 thq-button-filled thq-button-animated">
-              <span className="thq-body-small">Login</span>
-            </button>
-            <button className="navbar-action21 thq-button-outline thq-button-animated">
-              <span className="thq-body-small">Signin</span>
-            </button>
-          </div>
+        <Link to="/login" className="navbar-action11 thq-button-filled thq-button-animated">
+          <span className="thq-body-small">Login</span>
+        </Link>
+      </div>
         </div>
 
         {/* Mobile Menu */}

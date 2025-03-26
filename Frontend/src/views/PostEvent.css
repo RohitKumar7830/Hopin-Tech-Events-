@@ -1,0 +1,60 @@
+.post-event-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .post-event-content {
+    margin-top: 20px;
+    width: 50%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .post-event-content h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .post-event-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post-event-form input,
+  .post-event-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .post-event-form textarea {
+    height: 100px;
+    resize: none;
+  }
+  
+  .post-event-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .post-event-button:hover {
+    background-color: #0056b3;
+  }
+  

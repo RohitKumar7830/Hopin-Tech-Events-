@@ -19,23 +19,23 @@ const Footer = (props) => {
               Subscribe to our newsletter for the latest updates on new features
               and product releases.
             </span>
-            <div className="footer-actions">
-              <div className="footer-form">
-                <div className="footer-container">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="footer-text-input thq-input"
-                  />
+              {/* <div className="footer-actions">
+                <div className="footer-form">
+                  <div className="footer-container">
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="footer-text-input thq-input"
+                    />
+                  </div>
+                  <button className="thq-button-outline footer-button">
+                    <span className="thq-body-small">{props.action1}</span>
+                  </button>
                 </div>
-                <button className="thq-button-outline footer-button">
-                  <span className="thq-body-small">{props.action1}</span>
-                </button>
-              </div>
-              <span className="footer-content2 thq-body-small">
-                {props.content2}
-              </span>
-            </div>
+                <span className="footer-content2 thq-body-small">
+                  {props.content2}
+                </span>
+              </div> */}
           </div>
           <div className="footer-links">
             <div className="footer-column1">

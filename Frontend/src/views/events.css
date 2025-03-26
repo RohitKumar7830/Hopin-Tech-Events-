@@ -9,7 +9,7 @@
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
+  width:100%;
 }
 
 .events-header {
@@ -26,13 +26,13 @@
   margin: 0;
 }
 
-.search-filter {
+.events-search-filter {
   display: flex;
   gap: 1rem;
 }
 
-.search-filter input,
-.search-filter select {
+.events-search-filter input,
+.events-search-filter select {
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -44,7 +44,8 @@
   gap: 2rem;
 }
 
-.event-card {
+.events-card {
+  /* width: 80%; */
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -52,21 +53,21 @@
   transition: transform 0.2s ease;
 }
 
-.event-card:hover {
+.events-card:hover {
   transform: translateY(-5px);
 }
 
-.event-image {
+.events-card-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
-.event-content {
+.events-card-content {
   padding: 1.5rem;
 }
 
-.event-meta {
+.events-card-meta {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
@@ -74,29 +75,29 @@
   color: #666;
 }
 
-.event-title {
+.events-card-title {
   font-size: 1.5rem;
   margin: 0 0 1rem;
 }
 
-.event-description {
+.events-card-description {
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 1.5rem;
 }
 
-.event-footer {
+.events-card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.event-price {
+.events-card-price {
   font-weight: bold;
   color: #333;
 }
 
-.view-details-btn {
+.events-view-details-btn {
   padding: 0.5rem 1rem;
   background-color: #007bff;
   color: #fff;
@@ -105,7 +106,7 @@
   font-size: 0.9rem;
 }
 
-.view-details-btn:hover {
+.events-view-details-btn:hover {
   background-color: #0056b3;
 }
 
@@ -115,7 +116,7 @@
     align-items: flex-start;
   }
   
-  .search-filter {
+  .events-search-filter {
     width: 100%;
   }
 }
