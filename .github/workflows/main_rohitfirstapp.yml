@@ -32,7 +32,7 @@ jobs:
 
       - name: Archive backend for deployment
         run: |
-          cd backend
+          cd Backend
           zip -r ../app.zip . -x "venv/*" ".git/*" "__pycache__/*"
 
       - name: Log in to Azure
