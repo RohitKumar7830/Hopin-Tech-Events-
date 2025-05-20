@@ -26,11 +26,11 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-          cd backend
+          cd Backend
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Archive backend for deployment
+      - name: Archive Backend for deployment
         run: |
           cd Backend
           zip -r ../app.zip . -x "venv/*" ".git/*" "__pycache__/*"
